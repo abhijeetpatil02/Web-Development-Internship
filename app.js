@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AETHERIA E-Commerce JavaScript Logic
+   AETHERIA E-Commerce JavaScript Logic 
    ========================================================================== */
 
 // 1. Product Data Catalog (Level 3 Tasks)
@@ -163,7 +163,7 @@ function initTheme() {
 themeToggleBtn.addEventListener("click", () => {
   const currentTheme = document.documentElement.getAttribute("data-theme");
   const newTheme = currentTheme === "dark" ? "light" : "dark";
-  
+
   // Smooth rotating animation transition on button
   themeToggleBtn.style.transform = "rotate(360deg)";
   setTimeout(() => {
@@ -179,16 +179,16 @@ themeToggleBtn.addEventListener("click", () => {
 // ==========================================================================
 function renderProducts() {
   productGrid.innerHTML = "";
-  
-  const filtered = activeCategory === "all" 
-    ? PRODUCTS 
+
+  const filtered = activeCategory === "all"
+    ? PRODUCTS
     : PRODUCTS.filter(p => p.category === activeCategory);
-    
+
   if (filtered.length === 0) {
     productGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No products found in this category.</p>`;
     return;
   }
-  
+
   filtered.forEach(product => {
     const card = document.createElement("div");
     card.className = "product-card";
@@ -197,7 +197,7 @@ function renderProducts() {
     card.style.opacity = "0";
     card.style.transform = "translateY(10px)";
     card.style.transition = "all var(--transition-normal)";
-    
+
     card.innerHTML = `
       <div class="product-image-container">
         <span class="product-category-tag">${product.category}</span>
@@ -225,9 +225,9 @@ function renderProducts() {
         </button>
       </div>
     `;
-    
+
     productGrid.appendChild(card);
-    
+
     // Trigger animation frame for clean fade-in entry
     requestAnimationFrame(() => {
       setTimeout(() => {
@@ -236,7 +236,7 @@ function renderProducts() {
       }, 50);
     });
   });
-  
+
   bindProductEvents();
 }
 
@@ -247,13 +247,13 @@ function bindProductEvents() {
     btn.addEventListener("click", (e) => {
       const productId = parseInt(btn.getAttribute("data-id"));
       addToCart(productId);
-      
+
       // Level 4 Task 1: Change visual appearance of button when clicked
       btn.classList.add("added");
       const textSpan = btn.querySelector("span");
       const originalText = textSpan.textContent;
       textSpan.textContent = "Added!";
-      
+
       // Play a quick scaling bounce
       btn.style.transform = "scale(0.95)";
       setTimeout(() => { btn.style.transform = "scale(1)"; }, 150);
@@ -292,13 +292,13 @@ filterButtons.forEach(btn => {
 function addToCart(productId) {
   const product = PRODUCTS.find(p => p.id === productId);
   const cartItem = cart.find(item => item.product.id === productId);
-  
+
   if (cartItem) {
     cartItem.quantity++;
   } else {
     cart.push({ product, quantity: 1 });
   }
-  
+
   updateCartUI();
 }
 
@@ -306,7 +306,7 @@ function updateCartUI() {
   // Update Item Badge count (Level 4 Task 2)
   const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   cartCountBadge.textContent = totalCount;
-  
+
   // Animation bounce on badge trigger
   cartCountBadge.style.transform = "scale(1.3)";
   setTimeout(() => {
@@ -315,7 +315,7 @@ function updateCartUI() {
 
   // Render items inside drawer
   cartDrawerContent.innerHTML = "";
-  
+
   if (cart.length === 0) {
     cartDrawerContent.innerHTML = `
       <div class="cart-empty">
@@ -326,13 +326,13 @@ function updateCartUI() {
     cartSubtotalValue.textContent = "$0.00";
     return;
   }
-  
+
   let subtotal = 0;
-  
+
   cart.forEach(item => {
     const itemTotal = item.product.price * item.quantity;
     subtotal += itemTotal;
-    
+
     const cartItemDiv = document.createElement("div");
     cartItemDiv.className = "cart-item";
     cartItemDiv.innerHTML = `
@@ -354,12 +354,12 @@ function updateCartUI() {
         </div>
       </div>
     `;
-    
+
     cartDrawerContent.appendChild(cartItemDiv);
   });
-  
+
   cartSubtotalValue.textContent = `$${subtotal.toFixed(2)}`;
-  
+
   bindCartActions();
 }
 
@@ -439,7 +439,7 @@ checkoutBtn.addEventListener("click", () => {
 function openDetailsModal(productId) {
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return;
-  
+
   modalBodyGrid.innerHTML = `
     <div class="modal-img-section">
       <img class="modal-img" src="${product.image}" alt="${product.name}">
@@ -469,21 +469,21 @@ function openDetailsModal(productId) {
       </button>
     </div>
   `;
-  
+
   detailsModalOverlay.classList.add("active");
   document.body.style.overflow = "hidden";
-  
+
   // Bind events within the newly rendered modal content
   const accordionHeaderBtn = document.getElementById("accordionHeaderBtn");
   const accordionContent = document.getElementById("accordionContent");
-  
+
   accordionHeaderBtn.addEventListener("click", () => {
     const isExpanded = accordionHeaderBtn.getAttribute("aria-expanded") === "true";
-    
+
     // Toggle active state classes and attributes
     accordionHeaderBtn.classList.toggle("active");
     accordionHeaderBtn.setAttribute("aria-expanded", !isExpanded);
-    
+
     if (!isExpanded) {
       // Open technical spec accordion (calculates dynamic height)
       accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
@@ -496,12 +496,12 @@ function openDetailsModal(productId) {
   const modalAddBtn = document.getElementById("modalAddBtn");
   modalAddBtn.addEventListener("click", () => {
     addToCart(product.id);
-    
+
     modalAddBtn.style.backgroundColor = "var(--success)";
     modalAddBtn.style.borderColor = "var(--success)";
     const textSpan = modalAddBtn.querySelector("span");
     textSpan.textContent = "Added to Cart!";
-    
+
     // Visual feedback reset
     setTimeout(() => {
       modalAddBtn.style.backgroundColor = "";
@@ -579,27 +579,27 @@ contactMessage.addEventListener("focusout", () => {
 
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  
+
   const nameGroup = document.getElementById("nameGroup");
   const emailGroup = document.getElementById("emailGroup");
   const messageGroup = document.getElementById("messageGroup");
-  
+
   const isNameValid = validateInput(contactName, nameGroup, null, isNotEmpty);
   const isEmailValid = validateInput(contactEmail, emailGroup, null, isValidEmail);
   const isMsgValid = validateInput(contactMessage, messageGroup, null, isNotEmpty);
-  
+
   if (isNameValid && isEmailValid && isMsgValid) {
     const submitBtn = document.getElementById("formSubmitBtn");
     submitBtn.classList.add("success");
     const textSpan = submitBtn.querySelector("span");
     const originalBtnHTML = submitBtn.innerHTML;
-    
+
     textSpan.textContent = "Message Sent!";
     submitBtn.querySelector("svg").innerHTML = `<polyline points="20 6 9 17 4 12"></polyline>`;
-    
+
     // Simulation details completion
     alert(`Thank you, ${contactName.value}! Your message has been received simulated.`);
-    
+
     // Clear validation borders and inputs
     contactForm.reset();
     setTimeout(() => {
@@ -617,7 +617,7 @@ contactForm.addEventListener("submit", (e) => {
 // ==========================================================================
 menuToggleBtn.addEventListener("click", () => {
   navMenu.classList.toggle("active");
-  
+
   // Transform hamburg lines to 'X' inside svg
   const svg = menuToggleBtn.querySelector("svg");
   if (navMenu.classList.contains("active")) {
@@ -633,7 +633,7 @@ navLinks.forEach(link => {
     navMenu.classList.remove("active");
     navLinks.forEach(l => l.classList.remove("active"));
     link.classList.add("active");
-    
+
     // Reset mobile button SVG lines
     menuToggleBtn.querySelector("svg").innerHTML = `<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>`;
   });
@@ -643,12 +643,12 @@ navLinks.forEach(link => {
 window.addEventListener("scroll", () => {
   const sections = document.querySelectorAll("section");
   const scrollPosition = window.scrollY + 100;
-  
+
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.offsetHeight;
     const sectionId = section.getAttribute("id");
-    
+
     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
       navLinks.forEach(l => {
         l.classList.remove("active");
