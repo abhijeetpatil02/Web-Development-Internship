@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AETHERIA E-Commerce JavaScript Logic 
+   AETHERIA E-Commerce JavaScript Logic
    ========================================================================== */
 
 // 1. Product Data Catalog (Level 3 Tasks)
