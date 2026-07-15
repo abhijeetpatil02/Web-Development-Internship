@@ -125,6 +125,7 @@ const PRODUCTS = [
 let cart = [];
 let activeCategory = "all";
 
+
 // 3. Select DOM Elements
 const productGrid = document.getElementById("productGrid");
 const filterButtons = document.querySelectorAll(".filter-btn");
@@ -153,7 +154,7 @@ const contactEmail = document.getElementById("contactEmail");
 const contactMessage = document.getElementById("contactMessage");
 
 // ==========================================================================
-// A. Theme Switcher System (Level 2 & 5 Task Support)
+// A. Theme Switcher System (Level 2 & 5 Task Support) 
 // ==========================================================================
 function initTheme() {
   const savedTheme = localStorage.getItem("theme") || "dark";
