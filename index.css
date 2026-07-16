@@ -21,8 +21,6 @@
   --border-radius-lg: 24px;
 
 }
-
-
 /* Dark Mode Variables (Default) */
 [data-theme="dark"] {
   --bg-primary: #08080a;
