@@ -130,7 +130,6 @@ let activeCategory = "all";
 // 3. Select DOM Elements
 const productGrid = document.getElementById("productGrid");
 const filterButtons = document.querySelectorAll(".filter-btn");
-
 const cartToggleBtn = document.getElementById("cartToggleBtn");
 const cartDrawerOverlay = document.getElementById("cartDrawerOverlay");
 const cartDrawerCloseBtn = document.getElementById("cartDrawerCloseBtn");
