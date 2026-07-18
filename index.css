@@ -46,6 +46,7 @@
   --glow-color: rgba(99, 102, 241, 0.15);
 }
 
+
 /* Light  Mode Variables */
 [data-theme="light"] {
   --bg-primary: #f6f8fa;
