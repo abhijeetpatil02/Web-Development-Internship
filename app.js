@@ -128,6 +128,7 @@ let cart = [];
 let activeCategory = "all";
 
 // 3. Select DOM Elements
+
 const productGrid = document.getElementById("productGrid");
 const filterButtons = document.querySelectorAll(".filter-btn");
 
