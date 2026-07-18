@@ -123,6 +123,7 @@ const PRODUCTS = [
 
 
 // 2. State Store Variables  
+
 let cart = [];
 let activeCategory = "all";
 
