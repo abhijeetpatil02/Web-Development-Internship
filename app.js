@@ -123,11 +123,10 @@ const PRODUCTS = [
 
 
 // 2. State Store Variables  
-
 let cart = [];
 let activeCategory = "all";
 
-// 3. Select DOM Elements
+// 3. Select DOM Elements s
 const productGrid = document.getElementById("productGrid");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const cartToggleBtn = document.getElementById("cartToggleBtn");
