@@ -137,6 +137,7 @@ const cartSubtotalValue = document.getElementById("cartSubtotalValue");
 const cartCountBadge = document.getElementById("cartCountBadge");
 const checkoutBtn = document.getElementById("checkoutBtn");
 
+
 const themeToggleBtn = document.getElementById("themeToggleBtn");
 
 const menuToggleBtn = document.getElementById("menuToggleBtn");
