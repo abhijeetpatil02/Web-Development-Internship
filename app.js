@@ -167,6 +167,7 @@ themeToggleBtn.addEventListener("click", () => {
   const currentTheme = document.documentElement.getAttribute("data-theme");
   const newTheme = currentTheme === "dark" ? "light" : "dark";
 
+
   // Smooth rotating animation transition on button
   themeToggleBtn.style.transform = "rotate(360deg)";
   setTimeout(() => {
