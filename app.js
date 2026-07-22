@@ -138,6 +138,7 @@ const cartCountBadge = document.getElementById("cartCountBadge");
 const checkoutBtn = document.getElementById("checkoutBtn");
 
 
+
 const themeToggleBtn = document.getElementById("themeToggleBtn");
 
 const menuToggleBtn = document.getElementById("menuToggleBtn");
@@ -165,6 +166,7 @@ themeToggleBtn.addEventListener("click", () => {
   const currentTheme = document.documentElement.getAttribute("data-theme");
   const newTheme = currentTheme === "dark" ? "light" : "dark";
 
+  
   // Smooth rotating animation transition on button
   themeToggleBtn.style.transform = "rotate(360deg)";
   setTimeout(() => {
