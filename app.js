@@ -178,7 +178,6 @@ themeToggleBtn.addEventListener("click", () => {
   localStorage.setItem("theme", newTheme);
 });
 
-
 // ==========================================================================
 // B. Product Render & Filtering (Level 1, 2, 3 & 5 Tasks)
 // ==========================================================================
